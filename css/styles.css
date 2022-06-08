@@ -1,0 +1,10 @@
+.wrapper {
+    width: 50%;
+    margin: auto;
+}
+
+svg.chart {
+    height: 100px;
+    width: 1000px;
+}  
+  

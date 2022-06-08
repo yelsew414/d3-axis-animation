@@ -15,11 +15,25 @@
 
     let xScale = d3.scaleBand()
                 .domain(d3.range(lower, upper + 1, 1))
-                .range([0, width - 100])
-                .padding(.2)
-
+                .range([0, width])
+                
     svg.append("g")
         .attr("class", "xaxis")
         .call(d3.axisBottom(xScale))
+
+    function updateAxis() {
+        upper++;
+        lower++;
+
+        xScale.domain(d3.range(lower, upper+1, 1))
+
+        svg.select(".xaxis")
+            .transition()
+            .ease(d3.easeLinear)
+            .duration(1000)
+            .call(d3.axisBottom(xScale))
+    }
+
+    d3.interval(updateAxis, 1000)
     
 })();
